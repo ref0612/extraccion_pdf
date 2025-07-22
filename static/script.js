@@ -113,24 +113,52 @@ document.addEventListener('DOMContentLoaded', () => {
             <h5 class="card-title">Tabla ${idx+1} – Página ${table.page}</h5>
             <p>${table.rows} filas × ${table.columns} columnas</p>
             <div class="table-responsive">
-              <table id="${tblId}" class="table table-striped table-bordered" style="width:100%">
-                <thead><tr>${table.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+              <table id="${tblId}" class="table table-striped table-bordered" style="width:100%;table-layout:auto;min-width:0;margin:0 auto;text-align:center;">
+                <thead><tr>${table.headers.map(h => `<th style='text-align:center;'>${h}</th>`).join('')}</tr></thead>
               </table>
             </div>
           </div>`;
         setTimeout(() => {
+            // Detectar columnas de hora
+            const horaCols = table.headers.map((h, i) => /hora/i.test(h) ? i : -1).filter(i => i !== -1);
             $(`#${tblId}`).DataTable({
                 data: table.data,
                 columns: table.headers.map(title => ({ title })),
-                pageLength: 10,
-                lengthMenu: [[10,25,50,-1],[10,25,50,"Todos"]],
-                language: { url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json' },
+                pageLength: 20,
+                lengthMenu: [[20,40,100,-1],[20,40,100,"Todos"]],
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
+                    paginate: {
+                        first: '', // Icono SVG por CSS
+                        previous: '',
+                        next: '',
+                        last: ''
+                    }
+                },
                 responsive: true,
-                destroy: true
+                destroy: true,
+                columnDefs: horaCols.map(idx => ({
+                    targets: idx,
+                    type: 'time-hhmm'
+                })),
+                pagingType: 'full_numbers',
+                dom: '<"d-flex justify-content-between align-items-center mb-2"lf>rt<"d-flex justify-content-between align-items-center mt-2"ip>'
             });
         }, 50);
         return card;
     }
+
+    // Plugin DataTables para ordenar horas tipo HH:mm o H:mm
+    jQuery.extend(jQuery.fn.dataTable.ext.type.order, {
+        'time-hhmm-pre': function (d) {
+            if (!d) return 0;
+            var parts = d.split(':');
+            if (parts.length < 2) return 0;
+            var h = parseInt(parts[0], 10);
+            var m = parseInt(parts[1], 10);
+            return h * 60 + m;
+        }
+    });
 
     document.getElementById('exportExcel').addEventListener('click', () => exportData('excel'));
     document.getElementById('exportCSV').addEventListener('click', () => exportData('csv'));

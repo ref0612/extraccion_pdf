@@ -6,48 +6,52 @@
   <link rel="stylesheet" href="/static/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
-<body>
-  <div class="container py-4">
-    <h1 class="mb-4">Extracción de Itinerarios</h1>
-
-    <form id="uploadForm" class="row g-3">
-      <div class="col-md-4">
-        <label for="fileInput" class="form-label">Seleccionar PDF</label>
-        <input type="file" id="fileInput" name="file" accept=".pdf" class="form-control" required>
-      </div>
-      <div class="col-md-3">
-        <label for="startDate" class="form-label">Fecha Inicio (Lunes)</label>
-        <input type="date" id="startDate" class="form-control" required>
-      </div>
-      <div class="col-md-3">
-        <label for="endDate" class="form-label">Fecha Fin (Domingo)</label>
-        <input type="date" id="endDate" class="form-control" readonly>
-      </div>
-      <div class="col-md-2 d-flex align-items-end">
-        <button type="submit" id="uploadBtn" class="btn btn-primary w-100">
-          <span id="uploadSpinner" class="spinner-border spinner-border-sm d-none"></span>
-          Procesar
-        </button>
-      </div>
-    </form>
+<body class="bg-dark text-light">
+  <div class="container py-5" style="max-width: 1100px;">
+    <div class="rounded-4 shadow-lg p-5 mb-5" style="background: linear-gradient(135deg, #232837 0%, #181c24 100%); border: 1px solid #232837;">
+      <h1 class="mb-4 fw-bold display-4 text-white" style="letter-spacing: -1px;">✈️ Extracción de Itinerarios</h1>
+      <form id="uploadForm" class="row g-4 align-items-end">
+        <div class="col-md-4">
+          <label for="fileInput" class="form-label text-light">Seleccionar PDF</label>
+          <input type="file" id="fileInput" name="file" accept=".pdf" class="form-control bg-dark text-light border-secondary" required>
+        </div>
+        <div class="col-md-3">
+          <label for="startDate" class="form-label text-light">Fecha Inicio (Lunes)</label>
+          <input type="date" id="startDate" class="form-control bg-dark text-light border-secondary" required>
+        </div>
+        <div class="col-md-3">
+          <label for="endDate" class="form-label text-light">Fecha Fin (Domingo)</label>
+          <input type="date" id="endDate" class="form-control bg-dark text-light border-secondary" readonly>
+        </div>
+        <div class="col-md-2 d-grid">
+          <button type="submit" id="uploadBtn" class="btn btn-primary btn-lg">
+            <span id="uploadSpinner" class="spinner-border spinner-border-sm d-none"></span>
+            Procesar
+          </button>
+        </div>
+      </form>
+    </div>
 
     <div id="alertContainer" class="mt-3"></div>
 
     <div id="resultsSection" class="mt-4 d-none">
-      <div id="documentInfo" class="card mb-3">
+      <div id="documentInfo" class="card mb-3 bg-gradient bg-dark text-light border-0 shadow-sm">
         <div class="card-body">
-          <h5 class="card-title">Información del documento</h5>
-          <p>Total de páginas: <strong id="totalPages"></strong></p>
-          <p>Tablas extraídas: <strong id="tablesExtracted"></strong></p>
-          <p>Fecha de extracción: <strong id="extractionDate"></strong></p>
-          <p>Período de fechas: <strong id="periodDates"></strong></p>
+          <h5 class="card-title fw-bold">Información del documento</h5>
+          <div class="row g-3">
+            <div class="col-md-3"><span class="text-secondary">Total de páginas:</span> <strong id="totalPages"></strong></div>
+            <div class="col-md-3"><span class="text-secondary">Tablas extraídas:</span> <strong id="tablesExtracted"></strong></div>
+            <div class="col-md-3"><span class="text-secondary">Fecha de extracción:</span> <strong id="extractionDate"></strong></div>
+            <div class="col-md-3"><span class="text-secondary">Período de fechas:</span> <strong id="periodDates"></strong></div>
+          </div>
         </div>
       </div>
 
       <div id="exportButtons" class="mb-3 d-none">
-        <button id="exportExcel" class="btn btn-success me-2">Exportar a Excel</button>
-        <button id="exportCSV" class="btn btn-info">Exportar a CSV</button>
+        <button id="exportExcel" class="btn btn-success me-2"><i class="bi bi-file-earmark-excel"></i> Exportar a Excel</button>
+        <button id="exportCSV" class="btn btn-info"><i class="bi bi-file-earmark-csv"></i> Exportar a CSV</button>
       </div>
 
       <div id="tablesContainer"></div>
