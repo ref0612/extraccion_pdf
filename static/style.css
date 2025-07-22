@@ -1,0 +1,458 @@
+/* Variables CSS */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #22c55e;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #06b6d4;
+    --dark-color: #1e293b;
+    --light-color: #f8fafc;
+    --border-color: #e2e8f0;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #f1f5f9;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+/* Contenedor principal */
+.container-fluid {
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header h1 i {
+    margin-right: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Contenido principal */
+.main-content {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Sección de carga */
+.upload-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: #f0f9ff;
+}
+
+.upload-area.drag-over {
+    border-color: var(--primary-color);
+    background-color: #dbeafe;
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.upload-area h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.upload-area p {
+    color: var(--secondary-color);
+    margin: 0.5rem 0;
+}
+
+.upload-info {
+    font-size: 0.875rem;
+    margin-top: 1rem;
+}
+
+/* Información del archivo */
+.file-info {
+    margin-top: 1.5rem;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--light-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.file-icon {
+    font-size: 2.5rem;
+    color: #dc2626;
+}
+
+.file-details h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--dark-color);
+}
+
+.file-details p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+/* Sección de resultados */
+.results-section {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tarjeta de metadata */
+.metadata-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.metadata-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.metadata-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.metadata-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.metadata-label {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.metadata-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Controles de exportación */
+.export-controls {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.export-controls h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* Contenedor de tablas */
+.tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.table-info {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+/* Estilos de DataTables personalizados */
+.dataTables_wrapper {
+    padding: 0;
+}
+
+.dataTables_filter input {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+}
+
+.dataTables_filter input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+table.dataTable {
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+
+table.dataTable thead th {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    font-weight: 600;
+    padding: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+table.dataTable tbody td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #f0f9ff;
+}
+
+/* Alertas */
+.alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    max-width: 400px;
+}
+
+.custom-alert {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-lg);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid var(--success-color);
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid var(--danger-color);
+}
+
+.alert-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-left: 4px solid var(--warning-color);
+}
+
+.alert-info {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-left: 4px solid var(--info-color);
+}
+
+/* Botones personalizados */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1e40af;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #16a34a;
+}
+
+.btn-info {
+    background-color: var(--info-color);
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #0891b2;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+/* Progress bar */
+.progress {
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 0 0.5rem;
+    }
+    
+    .upload-section,
+    .metadata-card,
+    .export-controls,
+    .table-wrapper {
+        padding: 1rem;
+    }
+    
+    .metadata-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-group .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .alert-container {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+        width: 100%;
+    } 
+    
+    .alert-container .custom-alert {
+        width: 100%;
+    }   
+}
